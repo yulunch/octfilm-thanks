@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oct.Film 拾月膠片 | 感謝有你</title>
+    <style>
+        :root {
+            --bg: #EBD9B3;
+            --ink: #2C1A0A;
+            --card-bg: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                         "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            line-height: 1.65;
+            padding-bottom: 60px;
+            min-height: 100vh;
+        }
+
+        /* ── Language Gate ── */
+        #language-gate {
+            position: fixed; inset: 0;
+            background: var(--bg);
+            z-index: 9999;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            transition: opacity .5s ease, visibility .5s ease;
+        }
+        .gate-logo { margin-bottom: 36px; }
+        .lang-btn-group {
+            display: flex; flex-direction: column; gap: 14px;
+            width: 80%; max-width: 270px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: 1.5px solid var(--ink);
+            color: var(--ink);
+            padding: 12px; font-size: 1rem; font-weight: 600;
+            cursor: pointer; border-radius: 6px; letter-spacing: 1px;
+            transition: all .25s;
+        }
+        .lang-btn:hover { background: var(--ink); color: var(--bg); }
+
+        /* ── Content ── */
+        .container {
+            max-width: 560px; margin: 0 auto;
+            padding: 0 20px 40px; display: none;
+        }
+        .logo-area {
+            text-align: center;
+            padding: 36px 0 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px dashed rgba(44,26,10,.25);
+            background: transparent;
+        }
+
+        .logo-area svg.brand-logo {
+            width: 72%;
+            max-width: 320px;
+            display: block;
+            margin: 0 auto;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(44,26,10,.12);
+            border-radius: 14px;
+            padding: 24px 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(44,26,10,.04);
+        }
+        h2 {
+            font-size: 1.15rem; margin-bottom: 13px;
+            padding-bottom: 7px;
+            border-bottom: 2px solid var(--ink);
+            display: inline-block;
+        }
+        p { font-size: .95rem; text-align: justify; }
+        ol, ul { padding-left: 20px; font-size: .95rem; }
+        li { margin-bottom: 9px; }
+
+        .gift-note {
+            font-size: .88rem;
+            color: rgba(44,26,10,.65);
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+            letter-spacing: .3px;
+        }
+
+        .back-link {
+            display: block; text-align: center;
+            margin-top: 6px; padding: 13px;
+            color: var(--ink); font-size: .9rem; text-decoration: none;
+            border: 1.5px solid rgba(44,26,10,.3); border-radius: 8px;
+            letter-spacing: .5px; transition: all .25s;
+        }
+        .back-link:hover { background: var(--ink); color: var(--bg); }
+    </style>
+</head>
+<body>
+
+<!-- ── Shared SVG symbol (invisible, referenced via <use>) ── -->
+<svg width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="octfilm-logo-tw" viewBox="0 0 220 210">
+      <!-- Camera body -->
+      <rect x="20" y="68" width="180" height="110" rx="14" fill="#2C1A0A"/>
+      <!-- Viewfinder bump (left-top) -->
+      <rect x="58" y="50" width="48" height="22" rx="6" fill="#2C1A0A"/>
+      <!-- Flash bump (right-top) -->
+      <rect x="170" y="56" width="22" height="15" rx="4" fill="#2C1A0A"/>
+      <!-- Shutter button -->
+      <circle cx="38" cy="64" r="6" fill="#2C1A0A"/>
+      <!-- Lens: outer ring (bg colour) -->
+      <circle cx="110" cy="126" r="42" fill="#EBD9B3"/>
+      <!-- Lens: dark ring -->
+      <circle cx="110" cy="126" r="34" fill="#2C1A0A"/>
+      <!-- Lens: white inner circle -->
+      <circle cx="110" cy="126" r="26" fill="#EBD9B3"/>
+      <!-- Crescent moon: dark circle offset left to carve the crescent -->
+      <circle cx="103" cy="122" r="20" fill="#2C1A0A"/>
+      <!-- Oct.Film -->
+      <text x="110" y="192"
+            font-family="Georgia,'Times New Roman',serif"
+            font-size="26" font-weight="400" fill="#2C1A0A"
+            text-anchor="middle" letter-spacing="1.5">Oct.Film</text>
+      <!-- 拾月膠片 -->
+      <text x="110" y="208"
+            font-family="'Noto Sans TC','PingFang TC',STHeiti,sans-serif"
+            font-size="12" font-weight="300" fill="#2C1A0A"
+            text-anchor="middle" letter-spacing="10">拾月膠片</text>
+    </symbol>
+
+    <symbol id="octfilm-logo-cn" viewBox="0 0 220 210">
+      <rect x="20" y="68" width="180" height="110" rx="14" fill="#2C1A0A"/>
+      <rect x="58" y="50" width="48" height="22" rx="6" fill="#2C1A0A"/>
+      <rect x="170" y="56" width="22" height="15" rx="4" fill="#2C1A0A"/>
+      <circle cx="38" cy="64" r="6" fill="#2C1A0A"/>
+      <circle cx="110" cy="126" r="42" fill="#EBD9B3"/>
+      <circle cx="110" cy="126" r="34" fill="#2C1A0A"/>
+      <circle cx="110" cy="126" r="26" fill="#EBD9B3"/>
+      <circle cx="103" cy="122" r="20" fill="#2C1A0A"/>
+      <text x="110" y="192"
+            font-family="Georgia,'Times New Roman',serif"
+            font-size="26" font-weight="400" fill="#2C1A0A"
+            text-anchor="middle" letter-spacing="1.5">Oct.Film</text>
+      <text x="110" y="208"
+            font-family="'Noto Sans TC','PingFang TC',STHeiti,sans-serif"
+            font-size="12" font-weight="300" fill="#2C1A0A"
+            text-anchor="middle" letter-spacing="10">拾月胶片</text>
+    </symbol>
+
+    <symbol id="octfilm-logo-en" viewBox="0 0 220 210">
+      <rect x="20" y="68" width="180" height="110" rx="14" fill="#2C1A0A"/>
+      <rect x="58" y="50" width="48" height="22" rx="6" fill="#2C1A0A"/>
+      <rect x="170" y="56" width="22" height="15" rx="4" fill="#2C1A0A"/>
+      <circle cx="38" cy="64" r="6" fill="#2C1A0A"/>
+      <circle cx="110" cy="126" r="42" fill="#EBD9B3"/>
+      <circle cx="110" cy="126" r="34" fill="#2C1A0A"/>
+      <circle cx="110" cy="126" r="26" fill="#EBD9B3"/>
+      <circle cx="103" cy="122" r="20" fill="#2C1A0A"/>
+      <text x="110" y="192"
+            font-family="Georgia,'Times New Roman',serif"
+            font-size="26" font-weight="400" fill="#2C1A0A"
+            text-anchor="middle" letter-spacing="1.5">Oct.Film</text>
+      <text x="110" y="208"
+            font-family="Georgia,'Times New Roman',serif"
+            font-size="11" font-weight="300" fill="#2C1A0A"
+            text-anchor="middle" letter-spacing="2">Custom Film Camera</text>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ── Language Gate ── -->
+<div id="language-gate">
+        <div class="gate-logo">
+        <img src="logo-cutout.png" alt="Oct.Film 拾月膠片"
+             style="width:260px;max-width:75vw;display:block;mix-blend-mode:multiply;">
+    </div>
+    <div class="lang-btn-group">
+        <button class="lang-btn" onclick="selectLanguage('en')">English</button>
+        <button class="lang-btn" onclick="selectLanguage('tw')">繁體中文</button>
+        <button class="lang-btn" onclick="selectLanguage('cn')">简体中文</button>
+    </div>
+</div>
+
+<!-- ── 繁體中文 ── -->
+<div id="content-tw" class="container">
+    <div class="card">
+        <h2>致謝首選</h2>
+        <p>親愛的客戶，感謝您選擇「拾月膠片 / Oct.Film」的手工客製相機。每一台相機都承載了我們對復古光影的執著，願它能陪伴您記錄生活中無可複製的溫暖瞬間。</p>
+        <p class="gift-note">品牌附贈專屬心意小卡片，可手寫祝福寄語，將這份心意送給您珍視的家人與朋友。</p>
+    </div>
+
+    <div class="card">
+        <h2>膠卷相機使用注意事項</h2>
+        <ol>
+            <li><strong>正確過片：</strong>每次拍攝前請務必將撥輪轉動至底，感受到阻力時切勿強行硬轉。</li>
+            <li><strong>拍攝安全距離：</strong>隨身版客製相機最佳拍攝距離為 1.2 公尺至無限遠，距離太近畫面會模糊。</li>
+            <li><strong>光線環境：</strong>室內或陰天光線不足時，請務必開啟閃光燈補光。</li>
+            <li><strong>電池說明：</strong>本產品依跨境航空安全規範，包裝內不含電池。請自行購買 <strong>AA 鹼性電池（台灣稱三號電池）</strong>，即可正常使用。</li>
+        </ol>
+    </div>
+
+    <a href="https://octfilm.com/zh-hant/" class="back-link">← 返回拾月膠片官網</a>
+</div>
+
+<!-- ── 简体中文 ── -->
+<div id="content-cn" class="container">
+    <div class="card">
+        <h2>非常感谢</h2>
+        <p>亲爱的客户，感谢您选择「拾月胶片 / Oct.Film」的手工定制相机。每一台相机都承载了我们对复古光影的执着，愿它能陪伴您记录生活中无可复制的温暖瞬间。</p>
+        <p class="gift-note">品牌附赠专属心意小卡片，可手写祝福寄语，将这份心意送给你珍视的家人与朋友。</p>
+    </div>
+
+    <div class="card">
+        <h2>胶卷相机使用注意事项</h2>
+        <ol>
+            <li><strong>正确过片：</strong>每次拍摄前请务必将拨轮转动到底，感受到阻力时切勿强行硬转。</li>
+            <li><strong>拍摄安全距离：</strong>随身版定制相机最佳拍摄距离为 1.2 米至无限远，距离太近画面会模糊。</li>
+            <li><strong>光线环境：</strong>室内或阴天光线不足时，请务必开启闪光灯补光。</li>
+            <li><strong>电池说明：</strong>本产品依跨境航空安全规范，包装内不含电池。请自行购买 <strong>AA 碱性电池</strong>，即可正常使用。</li>
+        </ol>
+    </div>
+
+    <a href="https://octfilm.com/zh-hans/" class="back-link">← 返回拾月胶片官网</a>
+</div>
+
+<!-- ── English ── -->
+<div id="content-en" class="container">
+    <div class="card">
+        <h2>Thank You</h2>
+        <p>Dear customer, thank you for purchasing our custom film camera from Oct.Film. Every single camera is handcrafted with our passion for vintage photography. May it capture your irreplaceable, warm moments in life.</p>
+        <p class="gift-note">A brand-exclusive greeting card is included — handwrite your message and share this heartfelt gift with the family and friends you treasure most.</p>
+    </div>
+
+    <div class="card">
+        <h2>Camera Quick Guide</h2>
+        <ul>
+            <li><strong>Winding the Film:</strong> Wind the wheel completely before every shot. Stop immediately when you feel resistance.</li>
+            <li><strong>Focus Range:</strong> The optimal shooting distance is 1.2 meters to infinity. Objects closer than 1.2m will be out of focus.</li>
+            <li><strong>Lighting:</strong> Always turn on the flash when shooting indoors or on cloudy days.</li>
+            <li><strong>Battery Notice:</strong> In compliance with international aviation safety regulations, batteries are NOT included. Please purchase one standard <strong>AA Alkaline Battery</strong> (such as Duracell or Energizer) locally upon arrival.</li>
+        </ul>
+    </div>
+
+    <a href="https://octfilm.com" class="back-link">← Visit Oct.Film Official Store</a>
+</div>
+
+<script>
+    function selectLanguage(lang) {
+        const gate = document.getElementById('language-gate');
+        gate.style.opacity = '0';
+        gate.style.visibility = 'hidden';
+        ['tw','cn','en'].forEach(l =>
+            document.getElementById('content-' + l).style.display = 'none');
+        document.getElementById('content-' + lang).style.display = 'block';
+        localStorage.setItem('octfilm_lang', lang);
+    }
+
+    // Auto-skip gate if language was previously chosen
+    (function () {
+        const saved = localStorage.getItem('octfilm_lang');
+        if (saved && ['tw', 'cn', 'en'].includes(saved)) {
+            const gate = document.getElementById('language-gate');
+            gate.style.opacity = '0';
+            gate.style.visibility = 'hidden';
+            document.getElementById('content-' + saved).style.display = 'block';
+        }
+    })();
+</script>
+</body>
+</html>
